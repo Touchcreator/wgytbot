@@ -5,3 +5,6 @@ This is the open source version of Wgytbot
 Just fork the github repo and make sure to add your discord token to the .env file: TOKEN=your token goes here
 ## Check Out our website
 https://bot.wgyt.tk
+## SECURITY
+IF YOU FIND A SECURITY ISSUE EMAIL WGYT@WGYT.TK
+ONLY THE LATEST VERSIONS ARE SUPPORTED
