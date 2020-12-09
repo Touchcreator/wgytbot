@@ -1,6 +1,7 @@
 const escapeRegex = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 module.exports = (client, message) => {
     const Discord = require("discord.js")
+    const fetch = require("node-fetch")
     const prefix = 'w!';
     const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
     if (!prefixRegex.test(message.content)) return;
