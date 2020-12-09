@@ -1,7 +1,6 @@
 const escapeRegex = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 module.exports = (client, message) => {
     const Discord = require("discord.js")
-    const fetch = require("node-fetch")
     const prefix = 'w!';
     const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
     if (!prefixRegex.test(message.content)) return;
@@ -10,11 +9,11 @@ module.exports = (client, message) => {
     const command = args.shift().toLowerCase();
     if (command === 'ping') {
         const pingembd = {
-            "title": "Waste Of Money Pinged",
+            "title": "WgytBot Pinged",
             "description": `Pong! 🏓 I have a latency of ${Date.now() - message.createdTimestamp}ms.`,
             "color": 11730944,
             "footer": {
-                "text": "Waste Of Money is made with ❤ by @wgyt#2120",
+                "text": "WgytBot is made with ❤ by @wgyt#2120",
                 "icon_url": "https://www.wgyt.tk/images/logo.png"
             }
         }
@@ -40,14 +39,14 @@ module.exports = (client, message) => {
     } else if (command === 'help') {
         const helpembd = {
             "title": "WgytBot Help",
-            "description": "Thanks for using Waste Of Money!",
+            "description": "Thanks for using WgytBot!",
             "color": 11730944,
             "fields": [{
                 "name": "Commands",
                 "value": "To read about all of our commands go to https://bot.wgyt.tk/commands"
             }, {
                 "name": "Help with other aspects of the bot",
-                "value": "For help with the bot in general, message @Wgyt#2120 or join Wgyt's server at https://wgyt.cf/discord/"
+                "value": "For help with the bot in general, message @Wgyt#2120 or join WgytBot's server at https://discord.gg/PhwN8A9Bgp"
             }, {
                 "name": "Website",
                 "value": "https://bot.wgyt.tk/"
@@ -69,7 +68,7 @@ module.exports = (client, message) => {
     } else if (command === "pingme") {
         message.channel.send(`Pong! 🏓 ${message.author}`);
     } else if (command === "source") {
-        message.channel.send("WgytBot is open-source! :partying_face: My source is available at https://github.com/wgyt735yt/Waste Of Money :)");
+        message.channel.send("WgytBot is open-source! :partying_face: My source is available at https://github.com/wgyt735yt/wgytbot :)");
     } else if (command === "christmas") {
         message.channel.send(":santa:  Happy holidays, " + message.author);
     } else if (command === "gtg") {
@@ -84,8 +83,7 @@ module.exports = (client, message) => {
       } else {
         message.channel.send(`:green_square:  ${response.status} Online`)
       }
-      } else {
+      })}else {
         message.channel.send("Sadly, that's not a command.");
-    })
-		}
+    };
 }
