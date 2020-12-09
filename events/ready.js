@@ -1,6 +1,6 @@
 module.exports = (client) => {
   console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setUsername('wgytbot');
+	client.user.setUsername('wasteof.bot');
     client.user.setPresence({
         status: "online",  //You can show online, idle....
         game: {
