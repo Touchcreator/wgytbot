@@ -5,3 +5,5 @@ Created the repo and added most of the commands.
 Added .replit file for easier use with Repl.it
 Added Christmas command & got to go command
 Removed Kick command because of glitch. Will add later on.
+## v2.0.1-beta
+Added moderation
