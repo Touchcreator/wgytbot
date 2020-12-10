@@ -79,7 +79,7 @@ module.exports = (client, message) => {
       }
      })
 			}else if(command==="repeat"){
-				message.channel.send(`'${args[0]}' - <@${message.author}>`)
+				message.channel.send(`'${args}' - <@${message.author}>`)
 			}else if(command==="ban"){
 				const member = message.author.id();
 				if (member.roles.cache.some(role => role.name === 'MODS')) {				const user = message.mentions.users.first();
@@ -90,7 +90,9 @@ module.exports = (client, message) => {
 				}
 			}else if(command==="funnyquote"){
 				var randomCase = require('random-case');
-				rndmzed = randomCase(args[0]);
+				var lengthargs = args.length - 1
+				const newArray = args.slice(0, lengthargs)
+				rndmzed = randomCase(newArray[]);
 				message.channel.send(`'${rndmzed}' - <@${message.mentions.users.first()}>`)
 			}else if(command==="unban"){
 				if (member.roles.cache.some(role => role.name === 'MODS')) {
