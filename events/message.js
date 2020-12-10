@@ -23,20 +23,6 @@ module.exports = (client, message) => {
         });
     } else if (command === 'prefix') {
         message.reply(`you can either ping me or use \`${prefix}\` as my prefix.`);
-    } else if (command === 'kick') {
-        const member = message.mentions.members.first()
-        if (!member) {
-            return message.reply(
-                `Who are you trying to kick? You must mention a user.`
-            )
-        }
-        if (!member.kickable) {
-            return message.reply(`I can't kick this user. Sorry!`)
-        }
-        return member
-            .kick()
-            .then(() => message.reply(`${member.user.tag} was kicked.`))
-            .catch((error) => message.reply(`Sorry, an error occured.`))
     } else if (command === 'help') {
         const helpembd = {
             "title": "WgytBot Help",
@@ -73,10 +59,8 @@ module.exports = (client, message) => {
     } else if (command === "christmas") {
         message.channel.send(":santa:  Happy holidays, " + message.author);
     } else if (command === "gtg") {
-        message.channel.send(message.author + " has to go!");
-    } else if (command === "got to go") {
-        message.channel.send(message.author + " has to go!");
-    }else if(command==="status"){
+        message.channel.send("<@" + message.author + "> has to go!");
+    } else if(command==="status"){
 			fetch('https://bot.wgyt.tk')
       .then(function(response) {
       if (response.status != "200") {
@@ -84,7 +68,32 @@ module.exports = (client, message) => {
       } else {
         message.channel.send(`:green_square:  ${response.status} Online`)
       }
-      })}else {
+     })
+			}else if(command==="ban"){
+				const member = message.author.id();
+				if (member.roles.cache.some(role => role.name === 'MODS')) {				const user = message.mentions.users.first();
+				guild.members.ban(user);
+        message.channel.send("Banned!");
+				}else{
+				message.channel.send("Sadly, you can't do that.");
+				}
+			}else if(command==="unban"){
+				if (member.roles.cache.some(role => role.name === 'MODS')) {
+				const id = args[0];
+				guild.members.unban(id);
+        message.channel.send("UnBanned!");
+				}else{
+				message.channel.send("Sadly, you can't do that.");
+				}
+			}else if(command==="kick"){
+				if (member.roles.cache.some(role => role.name === 'MODS')) {
+				const member = message.mentions.members.first();
+				member.kick();
+        message.channel.send("Kicked!");
+				}else{
+				message.channel.send("Sadly, you can't do that.");
+				}
+			}else {
         message.channel.send("Sadly, that's not a command.");
     };
 }
