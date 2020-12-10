@@ -1,6 +1,7 @@
 const escapeRegex = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 module.exports = (client, message) => {
     const Discord = require("discord.js")
+    const fetch = require("node-fetch")
     const prefix = 'w!';
     const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
     if (!prefixRegex.test(message.content)) return;
@@ -69,5 +70,21 @@ module.exports = (client, message) => {
         message.channel.send(`Pong! 🏓 ${message.author}`);
     } else if (command === "source") {
         message.channel.send("WgytBot is open-source! :partying_face: My source is available at https://github.com/wgyt735yt/wgytbot :)");
-    }
+    } else if (command === "christmas") {
+        message.channel.send(":santa:  Happy holidays, " + message.author);
+    } else if (command === "gtg") {
+        message.channel.send(message.author + " has to go!");
+    } else if (command === "got to go") {
+        message.channel.send(message.author + " has to go!");
+    }else if(command==="status"){
+			fetch('https://bot.wgyt.tk')
+      .then(function(response) {
+      if (response.status != "200") {
+        message.channel.send(`:red_square:  ${response.status} Offline`)
+      } else {
+        message.channel.send(`:green_square:  ${response.status} Online`)
+      }
+      })}else {
+        message.channel.send("Sadly, that's not a command.");
+    };
 }

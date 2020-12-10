@@ -16,7 +16,10 @@ client.login(process.env.TOKEN)
 
 /* Setup Express Js */
 var express = require('express')
+const rateLimit = require("express-rate-limit");
+const limiter = rateLimit({windowMs: 2 * 60 * 1000, max: 90});
 var app = express()
+app.use(limiter); // apply to all requests
 /* Express Config */
 var listener = app.listen(process.env.PORT, () => {
     console.log(`Your app is listening on port ${listener.address().port}`);
