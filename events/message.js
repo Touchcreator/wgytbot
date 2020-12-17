@@ -57,10 +57,10 @@ module.exports = (client, message) => {
     } else if (command === "source") {
         message.channel.send("WgytBot is open-source! :partying_face: My source is available at https://github.com/wgyt735yt/wgytbot :)");
     } else if (command === "christmas") {
-        message.channel.send(":santa:  Happy holidays, " + message.author);
+        message.channel.send(":santa:  Happy holidays, <@" + message.author + ">");
     } else if (command === "gtg") {
         message.channel.send("<@" + message.author + "> has to go!");
-    } else if(command==="status"){
+    } else if(command==="botstatus"){
 			fetch('https://bot.wgyt.tk')
       .then(function(response) {
       if (response.status != "200") {
@@ -69,6 +69,17 @@ module.exports = (client, message) => {
         message.channel.send(`:green_square:  ${response.status} Online`)
       }
      })
+			}else if (command==="webstatus"){
+			fetch(args[0])
+      .then(function(response) {
+      if (response.status != "200") {
+        message.channel.send(`AAAAAAAAAAAAAA ${args[0]} IS DOWN WITH STATUS ${response.status}`)
+      } else {
+        message.channel.send(`:green_square:  ${response.status} Online`)
+      }
+     })
+			}else if(command==="repeat"){
+				message.channel.send(`'${args}' - <@${message.author}>`)
 			}else if(command==="ban"){
 				const member = message.author.id();
 				if (member.roles.cache.some(role => role.name === 'MODS')) {				const user = message.mentions.users.first();
@@ -77,6 +88,12 @@ module.exports = (client, message) => {
 				}else{
 				message.channel.send("Sadly, you can't do that.");
 				}
+			}else if(command==="funnyquote"){
+				var randomCase = require('random-case');
+				var lengthargs = args.length - 1
+				const newArray = args.slice(0, lengthargs)
+				rndmzed = randomCase(newArray[]);
+				message.channel.send(`'${rndmzed}' - <@${message.mentions.users.first()}>`)
 			}else if(command==="unban"){
 				if (member.roles.cache.some(role => role.name === 'MODS')) {
 				const id = args[0];
