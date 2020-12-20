@@ -1,12 +1,3 @@
----
-name: Bug Fix
-about: Create a pull request to help us improve
-title: "[bug fix]"
-labels: bug
-assignees: wgyt
-
----
-
 **Describe the bug fix**
 A clear and concise description of what the bug is.
 
